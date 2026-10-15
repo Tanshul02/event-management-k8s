@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: event-portal
-        image: tanshul12/event-management:latest
+        image: tanshul12/event-management:broken-fault-v999
         imagePullPolicy: Always
         ports:
         - containerPort: 80
