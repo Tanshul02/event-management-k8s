@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-portal-deployment
+  labels:
+    app: event-portal
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: event-portal
+  template:
+    metadata:
+      labels:
+        app: event-portal
+    spec:
+      containers:
+      - name: event-portal
+        image: tanshul12/event-management:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-portal-service
+spec:
+  type: NodePort
+  selector:
+    app: event-portal
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30082
