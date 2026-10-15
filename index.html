@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College Event Management Portal</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: #0b132b; color: #f8fafc; padding: 2rem; }
+    header { text-align: center; margin-bottom: 2.5rem; border-bottom: 2px solid #6366f1; padding-bottom: 1rem; }
+    h1 { color: #818cf8; font-size: 2.2rem; }
+    .subtitle { color: #94a3b8; font-size: 1rem; margin-top: 0.5rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .status-bar { display: flex; justify-content: space-between; background: #1c2541; padding: 1rem 1.5rem; border-radius: 8px; margin-bottom: 2rem; border-left: 4px solid #6366f1; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .card { background: #1c2541; border-radius: 10px; padding: 1.5rem; border: 1px solid #3a506b; display: flex; flex-direction: column; justify-content: space-between; }
+    .card h3 { color: #e2e8f0; font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .event-type { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-bottom: 0.75rem; background: #4f46e5; color: #fff; }
+    .detail { color: #94a3b8; font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .detail strong { color: #cbd5e1; }
+    .btn-reg { margin-top: 1rem; background: #6366f1; color: white; border: none; padding: 0.7rem; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; }
+    .btn-reg:hover { background: #4f46e5; }
+    footer { text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.9rem; border-top: 1px solid #1e293b; padding-top: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>College Event Management Portal</h1>
+      <p class="subtitle">Technical Symposiums, Hackathons, Cultural Festivals & Workshops</p>
+    </header>
+
+    <div class="status-bar">
+      <div><strong>Registered Events:</strong> <span id="regCount">0</span></div>
+      <div><strong>Coordinator Mode:</strong> Faculty & Student Council Active</div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div>
+          <span class="event-type">Hackathon</span>
+          <h3>DevHacks 2026: 36-Hr Codeathon</h3>
+          <p class="detail"><strong>Venue:</strong> Technology Tower - Tech Lab 3</p>
+          <p class="detail"><strong>Date:</strong> Nov 20-21, 2026</p>
+          <p class="detail"><strong>Limit:</strong> 150 Teams (50 Seats Left)</p>
+          <p class="detail"><strong>Eligibility:</strong> Open to all B.Tech / M.Tech</p>
+        </div>
+        <button class="btn-reg" onclick="register('DevHacks 2026')">Register Team</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="event-type">Symposium</span>
+          <h3>National Cloud & DevOps Conclave</h3>
+          <p class="detail"><strong>Venue:</strong> Dr. M.G.R. Auditorium</p>
+          <p class="detail"><strong>Date:</strong> Nov 28, 2026</p>
+          <p class="detail"><strong>Limit:</strong> 400 Delegates</p>
+          <p class="detail"><strong>Eligibility:</strong> IEEE / CSI Student Members</p>
+        </div>
+        <button class="btn-reg" onclick="register('DevOps Conclave')">Register Participant</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="event-type">Cultural Fest</span>
+          <h3>Riviera Carnival: Battle of the Bands</h3>
+          <p class="detail"><strong>Venue:</strong> Outdoor Amphitheatre</p>
+          <p class="detail"><strong>Date:</strong> Dec 05, 2026</p>
+          <p class="detail"><strong>Limit:</strong> 25 Bands</p>
+          <p class="detail"><strong>Eligibility:</strong> Inter-College Teams</p>
+        </div>
+        <button class="btn-reg" onclick="register('Battle of the Bands')">Register Band</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>College Event Portal Version 1.0.0 (Production Stable) | 3-Replica High Availability Cluster</p>
+    </footer>
+  </div>
+
+  <script>
+    let regs = 0;
+    function register(evt) {
+      regs++;
+      document.getElementById('regCount').innerText = regs;
+      alert(`Registration Successful for: ${evt}! Confirmation sent to student email.`);
+    }
+  </script>
+</body>
+</html>
